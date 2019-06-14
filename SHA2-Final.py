@@ -240,7 +240,7 @@ class SHA256:
             sender.connect((serverIP, 5432))
             sender.send(bytes(hashedmessage, encoding='utf-8'))
 
-        time.sleep(0.2)
+        sleep(0.2)
 
     @staticmethod
     def server_recv():
