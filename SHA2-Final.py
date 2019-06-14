@@ -235,11 +235,12 @@ class SHA256:
         :param serverIP: This is the IP of the computer you want to send the message to.
         :param message: The message to be sent to the computer.
         """
+        hashedmessage = SHA256.hash(message, "string")
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sender:
             sender.connect((serverIP, 5432))
-            sender.send(bytes(message, encoding='utf-8'))
+            sender.send(bytes(hashedmessage, encoding='utf-8'))
 
-        sleep(0.2)
+        time.sleep(0.2)
 
     @staticmethod
     def server_recv():
